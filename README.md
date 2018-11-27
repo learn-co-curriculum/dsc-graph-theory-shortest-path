@@ -1,6 +1,7 @@
 
 # Graph Theory: Simple and Shortest Paths
 
+## Introduction
 In graph theory, a path in a graph is a finite or infinite sequence of edges which connect a sequence of vertices which, by most definitions, are all distinct from one another. In a directed graph, a directed path (sometimes called dipath[1]) is again a sequence of edges (or arcs) which connect a sequence of vertices, but with the added restriction that the edges all be directed in the same direction.
 
 ## Objectives
