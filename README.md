@@ -10,6 +10,198 @@ You will be able to:
 - Calculate simple and shortest paths for undirected, directed and weighted graphs
 - Explain Dijkstra Algorithm and calculate the shortest path using this algorithm in networkx
 
+## Importing Packages
+
+
+```python
+import networkx as nx
+import numpy as np
+%matplotlib inline
+```
+
+## Creating a [Small World] Network
+
+
+```python
+nx.draw?
+```
+
+
+```python
+G = nx.navigable_small_world_graph(3, seed=3)
+G = nx.relabel_nodes(G, dict(zip(G.nodes, ["A", "B", "C", "D", "E", "F", "G", "H", "I"])))
+nx.draw(G, pos=nx.random_layout(G, seed=9), with_labels=True, node_color="#1cf0c7",
+        node_size=500, font_weight="bold", width=2, alpha=.8)
+```
+
+
+![png](index_files/index_5_0.png)
+
+
+## Retrieving Shortest Paths with NetworkX
+
+
+```python
+nx.has_path(G, "F", "G")
+```
+
+
+
+
+    True
+
+
+
+
+```python
+nx.shortest_path(G, "F", "G")
+```
+
+
+
+
+    ['F', 'I', 'G']
+
+
+
+
+```python
+nx.shortest_path_length(G, "F", "G")
+```
+
+
+
+
+    2
+
+
+
+
+```python
+nx.dijkstra_path(G, "F", "G")
+```
+
+
+
+
+    ['F', 'I', 'G']
+
+
+
+
+```python
+nx.dijkstra_path_length(G, "F", "G")
+```
+
+
+
+
+    2
+
+
+
+## Visualizing a Path
+
+Now that you've seen how to quickly 
+<img name="final_path_viz" src="">
+
+
+
+```python
+G.edges
+```
+
+
+
+
+    OutEdgeView([('A', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'D'), ('B', 'E'), ('B', 'C'), ('C', 'A'), ('C', 'E'), ('C', 'G'), ('C', 'F'), ('D', 'B'), ('D', 'F'), ('D', 'D'), ('E', 'B'), ('E', 'C'), ('E', 'F'), ('E', 'H'), ('F', 'D'), ('F', 'E'), ('F', 'I'), ('G', 'C'), ('G', 'H'), ('G', 'B'), ('H', 'E'), ('H', 'G'), ('H', 'I'), ('I', 'F'), ('I', 'H'), ('I', 'G')])
+
+
+
+## Adding Color to a Graph
+
+
+```python
+colors = []
+for edge in G.edges:
+#     print(type(edge), edge)
+    if edge == ("B", "A"):
+        colors.append("yellow")
+    else:
+        colors.append("black")
+nx.draw(G, pos=nx.random_layout(G, seed=9), with_labels=True, edge_color=colors)
+```
+
+
+![png](index_files/index_15_0.png)
+
+
+## Accessing Edges
+
+
+```python
+G.edges
+```
+
+While the entry is uninformative (there are no weights and no properties set), the mere existence 
+
+
+```python
+G.edges[('F', 'E')]
+```
+
+
+    ---------------------------------------------------------------------------
+
+    KeyError                                  Traceback (most recent call last)
+
+    <ipython-input-13-10f9dad37ea6> in <module>
+    ----> 1 G.edges[('F', 'A')]
+    
+
+    /Applications/anaconda3/lib/python3.7/site-packages/networkx/classes/reportviews.py in __getitem__(self, e)
+        928     def __getitem__(self, e):
+        929         u, v = e
+    --> 930         return self._adjdict[u][v]
+        931 
+        932     # EdgeDataView methods
+
+
+    KeyError: 'A'
+
+
+## Under the Hood: Dijkstra's Algorithm
+
+
+
+
+
+
+```python
+G['F']
+```
+
+
+
+
+    AtlasView({'D': {}, 'E': {}, 'I': {}})
+
+
+
+> **Warning:** Some of the edges in the network graph are difficult to see as they overlap or can be running through other nodes. For example, note from the display below how node C is actually connected to nodes A and G! These edges are virtually impossible to notice with the current drawing of the graph.
+
+
+```python
+G['C']
+```
+
+
+
+
+    AtlasView({'A': {}, 'E': {}, 'G': {}, 'F': {}})
+
+
+
 ## Simple and Shortest Paths
 ![](path.gif)
 
@@ -45,7 +237,7 @@ dict(G.degree())
 
 
 
-![png](index_files/index_2_1.png)
+![png](index_files/index_25_1.png)
 
 
 We can check if a path exists between different nodes of a graph.
@@ -181,7 +373,7 @@ nx.draw(DG, with_labels=True)
 ```
 
 
-![png](index_files/index_18_0.png)
+![png](index_files/index_41_0.png)
 
 
 Let's use a graph generator to create a directed graph and see how we can calculate the paths between nodes. 
@@ -196,7 +388,7 @@ nx.draw(D, pos=nx.fruchterman_reingold_layout(D), with_labels=True)
 ```
 
 
-![png](index_files/index_20_0.png)
+![png](index_files/index_43_0.png)
 
 
 For directed graphs, we usually calculate indegree and outdegree to process a node, here is how you would calculate it.
@@ -349,7 +541,7 @@ nx.draw_networkx_edge_labels(W, pos, edge_labels=nx.get_edge_attributes(W, 'weig
 
 
 
-![png](index_files/index_33_1.png)
+![png](index_files/index_56_1.png)
 
 
 Most of the methods shown above can be applied to all types of graphs. For weighted graphs, the associated weight plays an important role in defining the shortest path. Let's see it through some methods shown below:
@@ -372,6 +564,8 @@ So we see although a path may have a less hops from source to destination, the w
 
 ## Additional Resources
 - https://www.cse.ust.hk/~dekai/271/notes/L10/L10.pdf
+
+[NetworkX Drawing Parameters](https://networkx.github.io/documentation/networkx-1.10/reference/generated/networkx.drawing.nx_pylab.draw_networkx.html)
 
 ## Summary 
 
