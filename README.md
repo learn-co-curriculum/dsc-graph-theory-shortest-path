@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this lesson, you'll start to investigate transversing paths through networks! This has many useful applications such as finding the shortest path from one node to another. Path finding algorithms are central to all directions applications such as Google Maps, Waze, or Apple Maps. Additionally, the shortest path between two nodes also serves as an incredibly important distance metric between two nodes! This will then serve as a foundation for future discussions regarding node centrality, underlying analysis such as cliques in social circles, or bottleknecks in the diffussion of information.
+In this lesson, you'll start to investigate transversing paths through networks! This has many useful applications such as finding the shortest path from one node to another. Path finding algorithms are central to all directions applications such as Google Maps, Waze, or Apple Maps. Additionally, the shortest path between two nodes also serves as an incredibly important distance metric between two nodes! This will then serve as a foundation for future discussions regarding node centrality, underlying analysis such as cliques in social circles, or bottlenecks in the diffusion of information.
 
 ## Objectives
 You will be able to:
@@ -268,7 +268,7 @@ nx.draw_networkx_edges(G, nx.random_layout(G, seed=9), width=3,
 
 ## Under the Hood: Dijkstra's Algorithm
 
-Dijkstra's algorithm is essentially a depth based search. It commences at the starting node, spanning out to neighboring nodes and in turn visiting their neighbors in search of the destination. More formally, here's a general pseudocode outline for the algorithm:
+Dijkstra's algorithm is essentially a depth based search. It commences at the starting node, spanning out to neighboring nodes and in turn visiting their neighbors in search of the destination. More formally, here's a general pseudo-code outline for the algorithm:
 
 1. Mark all nodes as unvisited
 2. Set the distance of the starting node as 0, and $\infty$ for all other nodes
