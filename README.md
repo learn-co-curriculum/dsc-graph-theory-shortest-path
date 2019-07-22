@@ -284,7 +284,7 @@ Dijkstra's algorithm is essentially a depth based search. It commences at the st
 
 > Note: Dijkstra's algorithm (and NetworkX's implementations demonstrated above) returns a single path. In many cases, there may be multiple paths which are tied for the shortest distance between two nodes. In such cases, it is arbitrary which path is returned.
 
-In the upcoming lab, you'll work to code this classic algorithm on your own! And if you're really up for the challenge, you can use your visualization knowledge to create a fun visualization of the algorithm like this:
+In the upcoming lab, you'll work to code this classic algorithm on your own!
 
 ## Additional Resources
 
